@@ -1,0 +1,22 @@
+---
+- name: Installation de gatsby-cli
+  hosts: ec2  #on fait référence au groupe ec2 dans hosts.ini
+  become: true #on devient un super utilisateur
+  tasks:
+    - name: Installation de gcc-c++ et make #les paquets nécessaires pour l'installation de Node (si c'est bien ça?)
+      ansible.builtin.yum:  #avec quoi on extrait les paquets, ici yum
+        name:
+          - gcc-c++
+          - make
+        state: present #vérifie si ce n'est pas déjà installé pour éviter les répétitions(?)
+
+    - name: Installation de Node.js #et donc npm, pour pouvoir ensuite installer gatsby avec.
+      ansible.builtin.yum:
+        name: Node.js
+        state: present
+        enablerepo: epel #??? j'imagine que je reposerai la question
+
+    - name: Installation de gatsby-cli #avec npm donc
+      ansible.builtin.npm:  #ici on va installer grace à npm
+        name: gatsby-cli
+        global: yes
