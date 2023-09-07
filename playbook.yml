@@ -12,7 +12,7 @@
 
     - name: Installation de Node.js #et donc npm, pour pouvoir ensuite installer gatsby avec.
       ansible.builtin.yum:
-        name: Node.js
+        name: nodejs
         state: present
         enablerepo: epel #??? j'imagine que je reposerai la question
 
