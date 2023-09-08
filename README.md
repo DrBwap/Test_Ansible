@@ -7,4 +7,4 @@ Cours m2i sur l'utilisation d'Ansible
 
 Hosts.ini : ini pour inventory, 
 -i :
-
+playbook:
