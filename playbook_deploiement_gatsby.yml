@@ -1,0 +1,9 @@
+---
+- name: Deploiement de gatsby sur un serveur Apache
+  hosts: web_servers  #cibles où l'application Gatsby sera déployée
+  become: true
+  tasks:
+    - name: Install the latest version of Apache
+      ansible.builtin.yum:
+        name: httpd
+        state: latest
