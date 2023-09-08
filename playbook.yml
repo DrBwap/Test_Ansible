@@ -3,8 +3,8 @@
   hosts: ec2  #on fait référence au groupe ec2 dans hosts.ini
   become: true #on devient un super utilisateur
   tasks:
-    - name: Installation de gcc-c++ et make #les paquets nécessaires pour l'installation de Node (si c'est bien ça?)
-      ansible.builtin.yum:  #avec quoi on extrait les paquets, ici yum
+    - name: Installation de gcc-c++ et make #les paquets nécessaires pour l'installation de Node.js
+      ansible.builtin.yum:  #avec quoi on extrait les paquets, ici yum (Yellowdog Updater, Modified)
         name:
           - gcc-c++
           - make
@@ -14,7 +14,7 @@
       ansible.builtin.yum:
         name: nodejs
         state: present
-        enablerepo: epel #??? j'imagine que je reposerai la question
+        enablerepo: epel #Extra Package for Enterprise Linux: fournit des paquets supplémentaires pas forcément installés
 
     - name: Installation de gatsby-cli #avec npm donc
       ansible.builtin.npm:  #ici on va installer grace à npm
